@@ -13,6 +13,12 @@ import java.util.Arrays;
 @WebServlet(name = "requestParamServlet", urlPatterns = "/request-param")
 public class RequestParamServlet extends HttpServlet {
 
+    /*
+        1. Get 방식으로 호출해도 아래의 방식을 사용해도 되고
+        2. Post 방식이나 content-type 이 application/x-www-form-urlencoded 이면
+           메세지 바디에 쿼리 파라미터 형식으로 데이터를 전달하기 때문에 똑같이 아래의 방식으로 사용해도 된다. (username=park&age=34)
+     */
+
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
