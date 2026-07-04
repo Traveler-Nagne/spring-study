@@ -12,15 +12,6 @@ import java.io.IOException;
 @WebServlet(name = "requestHeaderServlet", urlPatterns = "/request-header")
 public class RequestHeaderServlet extends HttpServlet {
 
-    @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        printStartLine(request);
-        printHeaders(request);
-        printHeaderUtils(request);
-
-    }
-
     private static void printStartLine(HttpServletRequest request) {
 
         System.out.println("--- REQUEST-LINE - start ---");
@@ -34,6 +25,18 @@ public class RequestHeaderServlet extends HttpServlet {
         System.out.println("request.isSecure() = " + request.isSecure()); //https 사용 유무
 
         System.out.println("--- REQUEST-LINE - end ---" + "\n");
+
+    }
+
+
+    @Override
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException,
+            IOException {
+
+        printStartLine(request);
+        printHeaders(request);
+        printHeaderUtils(request);
+
     }
 
 
@@ -42,7 +45,9 @@ public class RequestHeaderServlet extends HttpServlet {
 
         System.out.println("--- Headers - start ---");
 
-        request.getHeaderNames().asIterator().forEachRemaining(headerName -> System.out.println(headerName + " : " + request.getHeader(headerName)));
+        request.getHeaderNames()
+                .asIterator()
+                .forEachRemaining(headerName -> System.out.println(headerName + " : " + request.getHeader(headerName)));
 
         System.out.println("---- Headers - end ---" + "\n");
     }
@@ -58,7 +63,8 @@ public class RequestHeaderServlet extends HttpServlet {
         System.out.println();
 
         System.out.println("[Accept-Language 편의 조회]");
-        request.getLocales().asIterator()
+        request.getLocales()
+                .asIterator()
                 .forEachRemaining(locale -> System.out.println("locale = " + locale));
         System.out.println("request.getLocale() = " + request.getLocale());
         System.out.println();

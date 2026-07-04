@@ -18,16 +18,18 @@ public class RequestBodyJsonServlet extends HttpServlet {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 
+
     /**
      * http://localhost:8080/request-body-json
-     *
+     * <p>
      * JSON 형식 전송
      * content-type: application/json
      * message body: {"username": "hello", "age": 20}
      *
      */
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException,
+            IOException {
 
         ServletInputStream inputStream = request.getInputStream();
         String messageBody = StreamUtils.copyToString(inputStream, StandardCharsets.UTF_8);
@@ -38,6 +40,7 @@ public class RequestBodyJsonServlet extends HttpServlet {
                 "helloData.name = " + helloData.getUsername() + "\n" +
                 "helloData.age = " + helloData.getAge();
 
-        response.getWriter().write(responseBody);
+        response.getWriter()
+                .write(responseBody);
     }
 }
