@@ -19,7 +19,7 @@ import java.util.Objects;
 @WebServlet(name = "frontControllerV3Servlet", urlPatterns = "/front-controller/v3/*")
 public class FrontControllerV3Servlet extends HttpServlet {
 
-    private Map<String, ControllerV3> controllers = new HashMap<>();
+    private final Map<String, ControllerV3> controllers = new HashMap<>();
 
 
     public FrontControllerV3Servlet() {
